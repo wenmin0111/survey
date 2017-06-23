@@ -1,0 +1,81 @@
+<ul class="list-inline">
+    <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+</ul>
+<div id="poll_form">
+    <h3>Put the question and options here:</h3>
+    <form #pollForm="ngForm" (submit)="createNewPoll(pollForm)">
+      <div class="form-group">
+        <label for="question">Question:
+        <input type="text" name="question" class="form-control"
+        [(ngModel)]="poll.question"
+        required
+        minlength="8"
+        #question="ngModel"
+        >
+        </label>
+      </div>
+      <div class="red" *ngIf='question.errors && ( question.touched || pollForm.submitted)'>
+        <p *ngIf='question.errors.required'>Question is required.</p>
+        <p *ngIf='question.errors.minlength'>Question must be at least 8 characters.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="option1">option1:
+        <input type="text" name="option1" class="form-control"
+        [(ngModel)]="poll.option1"
+        required
+        minlength="3"
+        #option1="ngModel"
+        > 
+        </label>
+      </div>
+      <div class="red" *ngIf='option1.errors && ( option1.touched || pollForm.submitted)'>
+        <p *ngIf='option1.errors.required'>option1 is required</p>
+        <p *ngIf='option1.errors.minlength'>option1 must be at least 3 characters.</p>
+      </div>
+      <div class="form-group">
+        <label for="option2">option2:
+        <input type="text" name="option2" class="form-control"
+        [(ngModel)]="poll.option2"
+        required
+        minlength="3"
+        #option2="ngModel"
+        >
+        </label>
+      </div>
+      <div class="red" *ngIf='option2.errors && ( option2.touched || pollForm.submitted)'>
+        <p *ngIf='option2.errors.required'>option2 is required</p>
+        <p *ngIf='option2.errors.minlength'>option2 must be at least 3 characters.</p>
+      </div>
+      <div class="form-group">
+        <label for="option3">option3:
+        <input type="text" name="option3" class="form-control"
+        [(ngModel)]="poll.option3"
+        required
+        minlength="3"
+        #option3="ngModel"
+        >
+        </label>
+      </div>
+      <div class="red" *ngIf='option3.errors && ( option3.touched || pollForm.submitted)'>
+        <p *ngIf='option3.errors.required'>option3 is required</p>
+        <p *ngIf='option3.errors.minlength'>option3 must be at least 3 characters.</p>
+      </div>
+      <div class="form-group">
+        <label for="option4">option4:
+        <input type="text" name="option4" class="form-control"
+        [(ngModel)]="poll.option4"
+        required
+        minlength="3"
+        #option4="ngModel"
+        >
+        </label>
+      </div>
+      <div class="red" *ngIf='option4.errors && ( option4.touched || pollForm.submitted)'>
+        <p *ngIf='option4.errors.required'>option4 is required</p>
+        <p *ngIf='option4.errors.minlength'>option4 must be at least 3 characters.</p>
+      </div>
+      
+      <button [disabled]="!pollForm.valid" type="submit" class="btn btn-success">Create Poll</button>
+    </form>
+  </div>

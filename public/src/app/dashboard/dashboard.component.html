@@ -1,0 +1,22 @@
+<ul class="list-inline">
+    <li><a [routerLink]="['/create']">Create a New Poll</a></li>
+    <li><a (click)="logOut()">Logout</a></li>
+</ul>
+
+<h3>Current Polls:</h3>
+<table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Survey Question</td>
+          <td>Date Posted</td>
+          <td>Action</td>
+        </tr>
+        <tr *ngFor=" let poll of polls">
+          <td>{{ poll.username }}</td>
+          <td><a [routerLink]="['/poll', poll._id ]">{{ poll.question }}</a></td>
+          <td>{{ poll.createdAt | date:'medium' }}</td>
+          <td><a *ngIf="poll.username == name" (click)="delete(poll._id)">Delete</a></td>
+        </tr>
+      </thead>
+</table>
